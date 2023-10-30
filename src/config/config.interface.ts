@@ -10,6 +10,9 @@ export interface ConfigDbInterface {
   username: string;
   password: string;
   database: string;
+  dialect: string;
+  charset: string;
+  logging: boolean;
 }
 
 export interface ConfigJWTInterface {

@@ -24,15 +24,13 @@ export enum Environment {
 const APPConfig = registerAs(
   ConfigKey.App,
   (): ConfigAppInterface => ({
-    env:
-      Environment[process.env.NODE_ENV as keyof typeof Environment] ||
-      Environment.Development,
+    env: Environment[process.env.NODE_ENV as keyof typeof Environment] || Environment.Development,
     port: Number(process.env.APP_PORT),
     appName: process.env.APP_NAME,
   }),
 );
 
-const DBConfig = registerAs(
+export const DBConfig = registerAs(
   ConfigKey.Db,
   (): ConfigDbInterface => ({
     host: process.env.DATABASE_HOST,
@@ -40,6 +38,9 @@ const DBConfig = registerAs(
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE,
+    dialect: process.env.DATABASE_DIALECT,
+    charset: process.env.DATABASE_CHARSET,
+    logging: process.env.DATABASE_LOGGING === 'true',
   }),
 );
 
@@ -58,9 +59,4 @@ const EncryptionConfig = registerAs(
   }),
 );
 
-export const configurations = [
-  APPConfig,
-  DBConfig,
-  JWTConfig,
-  EncryptionConfig,
-];
+export const configurations = [APPConfig, DBConfig, JWTConfig, EncryptionConfig];

@@ -1,11 +1,4 @@
-import {
-  IsAlpha,
-  IsDefined,
-  IsEnum,
-  IsNumberString,
-  IsString,
-  MinLength,
-} from 'class-validator';
+import { IsAlpha, IsDefined, IsEnum, IsNumberString, IsString, MinLength } from 'class-validator';
 import { Environment } from './config';
 
 export class EnvironmentVariablesDTO {
