@@ -38,3 +38,8 @@ lerna-debug.log*
 **/*.env*
 !src/config/env/development.env
 
+# ORM logs
+ormlogs.log
+
+# Sandbox folder
+/trash

@@ -21,7 +21,7 @@ export class EnvironmentVariablesDTO {
   @IsDefined()
   @IsNumberString()
   @MinLength(1)
-  DATABASE_PORT: string;
+  DATABASE_PORT: number | string;
 
   @IsDefined()
   @IsString()
@@ -42,6 +42,17 @@ export class EnvironmentVariablesDTO {
   @IsString()
   @MinLength(1)
   DATABASE: string;
+
+  /* ORM */
+  @IsDefined()
+  TYPEORM_ENTITIES: string[];
+
+  @IsDefined()
+  TYPEORM_MIGRATIONS: string[];
+
+  @IsDefined()
+  @IsString()
+  TYPEORM_MIGRATIONS_DIR: string;
 
   /* JWT CONFIG */
   @IsDefined()

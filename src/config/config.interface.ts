@@ -15,6 +15,12 @@ export interface ConfigDbInterface {
   logging: boolean;
 }
 
+export interface ConfigOrmInterface {
+  entities: string;
+  migrations: string;
+  migrationsDir: string;
+}
+
 export interface ConfigJWTInterface {
   secret: string;
   expireIn: string;

@@ -33,5 +33,5 @@ const showErrors = (errors: any[]): void => {
     return `${i++} - ${constraints.join(' | ')}`;
   });
 
-  console.log(formattedErrors.join('\n'));
+  console.log('\n' + formattedErrors.join('\n'));
 };

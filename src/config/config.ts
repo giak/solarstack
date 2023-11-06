@@ -2,6 +2,7 @@ import { registerAs } from '@nestjs/config';
 import {
   ConfigAppInterface,
   ConfigDbInterface,
+  ConfigOrmInterface,
   ConfigJWTInterface,
   ConfigEncryptionInterface,
 } from './config.interface';
@@ -9,6 +10,7 @@ import {
 export enum ConfigKey {
   App = 'APP',
   Db = 'DB',
+  Orm = 'ORM',
   Jwt = 'JWT',
   Encryption = 'ENCRYPTION',
 }
@@ -44,6 +46,15 @@ export const DBConfig = registerAs(
   }),
 );
 
+export const ORMConfig = registerAs(
+  ConfigKey.Orm,
+  (): ConfigOrmInterface => ({
+    entities: process.env.TYPEORM_ENTITIES,
+    migrations: process.env.TYPEORM_MIGRATIONS,
+    migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
+  }),
+);
+
 const JWTConfig = registerAs(
   ConfigKey.Jwt,
   (): ConfigJWTInterface => ({
@@ -59,4 +70,4 @@ const EncryptionConfig = registerAs(
   }),
 );
 
-export const configurations = [APPConfig, DBConfig, JWTConfig, EncryptionConfig];
+export const configurations = [APPConfig, JWTConfig, EncryptionConfig];
