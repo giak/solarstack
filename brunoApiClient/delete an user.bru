@@ -1,0 +1,18 @@
+meta {
+  name: delete an user
+  type: http
+  seq: 8
+}
+
+patch {
+  url: http://localhost:3010/users/56afd34c-68c0-4684-97f6-a0e01188bc37
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name" : "myname",
+    "password" : "123"
+  }
+}

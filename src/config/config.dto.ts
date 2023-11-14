@@ -1,4 +1,12 @@
-import { IsAlpha, IsDefined, IsEnum, IsNumberString, IsString, MinLength } from 'class-validator';
+import {
+  IsAlpha,
+  IsDefined,
+  IsEnum,
+  IsNumberString,
+  IsString,
+  MinLength,
+  IsBoolean,
+} from 'class-validator';
 import { Environment } from './config';
 
 export class EnvironmentVariablesDTO {
@@ -16,6 +24,38 @@ export class EnvironmentVariablesDTO {
   @IsString()
   @MinLength(1)
   APP_NAME: string;
+
+  /* SESSION CONFIG */
+  @IsDefined()
+  @IsString()
+  @MinLength(64)
+  SESSION_SECRET: string;
+
+  @IsDefined()
+  @IsString()
+  @MinLength(4)
+  SESSION_NAME: string;
+
+  @IsDefined()
+  @IsBoolean()
+  SESSION_RESAVE: boolean;
+
+  @IsDefined()
+  @IsBoolean()
+  SESSION_SAVE_UNINITIALIZED: boolean;
+
+  @IsDefined()
+  @IsBoolean()
+  SESSION_COOKIE_HTTP_ONLY: boolean;
+
+  @IsDefined()
+  @IsBoolean()
+  SESSION_COOKIE_SECURE: boolean;
+
+  @IsDefined()
+  @IsNumberString()
+  @MinLength(1)
+  SESSION_COOKIE_MAX_AGE: number | string;
 
   /* DATA CONFIG */
   @IsDefined()
@@ -57,7 +97,7 @@ export class EnvironmentVariablesDTO {
   /* JWT CONFIG */
   @IsDefined()
   @IsString()
-  @MinLength(18)
+  @MinLength(64)
   JWT_SECRET: string;
 
   @IsDefined()

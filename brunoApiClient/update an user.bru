@@ -1,0 +1,18 @@
+meta {
+  name: update an user
+  type: http
+  seq: 7
+}
+
+delete {
+  url: http://localhost:3010/users/56afd34c-68c0-4684-97f6-a0e01188bc37
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "name" : "myname",
+    "password" : "123"
+  }
+}

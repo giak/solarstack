@@ -3,6 +3,18 @@ export interface ConfigAppInterface {
   port: number;
   appName: string;
 }
+export interface ConfigSessionInterface {
+  secret: string;
+  name: string;
+  resave: boolean;
+  saveUninitialized: boolean;
+  cookie: ConfigSessionCookieInterface;
+}
+interface ConfigSessionCookieInterface {
+  httpOnly: boolean;
+  secure: boolean;
+  maxAge: number;
+}
 
 export interface ConfigDbInterface {
   host: string;

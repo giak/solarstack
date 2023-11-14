@@ -5,10 +5,12 @@ import {
   ConfigOrmInterface,
   ConfigJWTInterface,
   ConfigEncryptionInterface,
+  ConfigSessionInterface,
 } from './config.interface';
 
 export enum ConfigKey {
   App = 'APP',
+  Session = 'SESSION',
   Db = 'DB',
   Orm = 'ORM',
   Jwt = 'JWT',
@@ -29,6 +31,21 @@ const APPConfig = registerAs(
     env: Environment[process.env.NODE_ENV as keyof typeof Environment] || Environment.Development,
     port: Number(process.env.APP_PORT),
     appName: process.env.APP_NAME,
+  }),
+);
+
+export const SessionConfig = registerAs(
+  ConfigKey.Session,
+  (): ConfigSessionInterface => ({
+    secret: process.env.SESSION_SECRET,
+    name: process.env.SESSION_NAME,
+    resave: process.env.SESSION_RESAVE === 'true',
+    saveUninitialized: process.env.SESSION_SAVE_UNINITIALIZED === 'true',
+    cookie: {
+      httpOnly: process.env.SESSION_COOKIE_HTTP_ONLY === 'true',
+      secure: process.env.SESSION_COOKIE_SECURE === 'false',
+      maxAge: Number(process.env.SESSION_COOKIE_MAX_AGE),
+    },
   }),
 );
 
@@ -70,4 +87,4 @@ const EncryptionConfig = registerAs(
   }),
 );
 
-export const configurations = [APPConfig, JWTConfig, EncryptionConfig];
+export const configurations = [APPConfig, SessionConfig, JWTConfig, EncryptionConfig];

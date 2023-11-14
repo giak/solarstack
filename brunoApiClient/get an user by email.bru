@@ -1,0 +1,17 @@
+meta {
+  name: get an user by email
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:3010/users/email/bozo@lapin.net
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "uuid" : "7797c00d-aa8d-4a9f-baad-810fb3fa3f3e"
+  }
+}
