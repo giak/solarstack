@@ -6,14 +6,15 @@
         <div class="flex">
             <!-- Brand -->
             <a class="mx-2 my-1 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 lg:mb-0 lg:mt-0"
-                href="#">
+                href="{{ route('dashboard') }}">
                 <img class="mr-2" src="{{ asset('resources/images/solar_stack_logo.png') }}" style="height:32px"
                     alt="TE Logo" loading="lazy" />
             </a>
             <form class="hidden md:flex">
                 <input type="search"
                     class="relative m-0 block w-[250px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary motion-reduce:transition-none"
-                    placeholder="Search" aria-label="Search" aria-describedby="button-addon2" />
+                    placeholder="{{ t('nav.search')}}" aria-label="{{ t('nav.search')}}"
+                    aria-describedby="button-addon2" />
 
                 <!--Search icon-->
                 <span
@@ -96,7 +97,16 @@
                 <a class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 sm:flex [&.active]:text-black/90 dark:[&.active]:text-zinc-400 motion-reduce:transition-none"
                     href="#" data-te-nav-link-ref><img src="https://tecdn.b-cdn.net/img/new/avatars/1.jpg"
                         class="rounded-full" style="height: 25px; width: 25px" alt="TE Avatar" loading="lazy" />
-                    <strong class="ml-1 hidden sm:block">John</strong>
+                    <strong class="ml-1 hidden sm:block">
+
+
+                        @eval(await auth.check())
+                        @if(auth.isAuthenticated)
+                        <p> Hello {{ auth.user.email }} </p>
+                        @end
+
+
+                    </strong>
                 </a>
             </li>
 

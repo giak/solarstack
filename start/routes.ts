@@ -9,18 +9,12 @@
 
 import router from '@adonisjs/core/services/router'
 
-const DashboardController = () => import('#controllers/dashboard_controller')
-const LoginController = () => import('#controllers/login_controller')
+const SessionController = () => import('#controllers/session_controller')
 
-router.get('/test', async () => {
-  return 'Hello world'
-})
+import { middleware } from '#start/kernel'
 
-// The home page route
-router.on('/').render('pages/home')
+router.on('/').render('pages/dashboard/index').use(middleware.auth()).as('dashboard')
 
-// The dashboard page route
-router.get('/dashboard', [DashboardController, 'index'])
+router.on('/login').render('pages/login')
 
-// The login page route
-router.get('/login', [LoginController, 'index'])
+router.post('/login', [SessionController, 'store']).as('login')

@@ -6,5 +6,6 @@
 	"rememberme": "Se souvenir de moi",
 	"forgotpassword": "Mot de passe oublié ?",
 	"register": "S'inscrire",
-	"registerdescription": "vous n'avez pas de compte ?"
+	"registerdescription": "vous n'avez pas de compte ?",
+	"or": "ou"
 }
