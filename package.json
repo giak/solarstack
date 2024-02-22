@@ -53,12 +53,13 @@
 		"vite": "^5.0.12"
 	},
 	"dependencies": {
+		"@adonisjs/ally": "^5.0.2",
 		"@adonisjs/auth": "^9.1.1",
-		"@adonisjs/core": "^6.2.2",
+		"@adonisjs/core": "^6.2.3",
 		"@adonisjs/i18n": "^2.0.0",
 		"@adonisjs/lucid": "^20.1.0",
 		"@adonisjs/session": "^7.1.1",
-		"@adonisjs/shield": "^8.1.0",
+		"@adonisjs/shield": "^8.1.1",
 		"@adonisjs/static": "^1.1.1",
 		"@adonisjs/vite": "^2.0.2",
 		"@vinejs/vine": "^1.7.1",
