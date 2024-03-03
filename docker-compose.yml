@@ -2,7 +2,7 @@ version: '3.9'
 services:
   db:
     image: postgres:16-alpine
-    container_name: db-postgres-16-alpine
+    container_name: solarstack-db-postgres-16-alpine
     restart: unless-stopped
     ports:
       - 5432:5432
@@ -12,7 +12,7 @@ services:
       POSTGRES_DB: dbName
   adminer:
     image: adminer
-    container_name: ide-adminer
+    container_name: solarstack-ide-adminer
     restart: unless-stopped
     ports:
       - 8081:8080

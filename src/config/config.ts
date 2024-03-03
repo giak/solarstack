@@ -38,6 +38,7 @@ export const SessionConfig = registerAs(
   ConfigKey.Session,
   (): ConfigSessionInterface => ({
     secret: process.env.SESSION_SECRET,
+    salt: process.env.SESSION_SALT,
     name: process.env.SESSION_NAME,
     resave: process.env.SESSION_RESAVE === 'true',
     saveUninitialized: process.env.SESSION_SAVE_UNINITIALIZED === 'true',

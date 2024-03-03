@@ -5,6 +5,7 @@ export interface ConfigAppInterface {
 }
 export interface ConfigSessionInterface {
   secret: string;
+  salt: string;
   name: string;
   resave: boolean;
   saveUninitialized: boolean;
